@@ -1,0 +1,10 @@
+const express = require("express");
+const router = express.Router();
+const GoalController = require("../controllers/goal.controller");
+const { authenticateToken } = require("./../middleware/auth");
+router.post("", authenticateToken, GoalController.create);
+router.get("/", authenticateToken, GoalController.findAll);
+// router.get("/:goalId", GoalController.findOne);
+// router.put("/:goalId", GoalController.update);
+router.delete("/:goalId", GoalController.delete);
+module.exports = router;
